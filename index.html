@@ -6,16 +6,6 @@
   <title>Incident Response Playbook | SOC Documentation</title>
   <meta name="description" content="A complete, structured Incident Response procedure based on NIST SP 800-61, covering every phase from preparation to lessons learned." />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- AOS – Animate On Scroll -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
   <style>
     /* ─── RESET & VARIABLES ─────────────────────────────────────── */
@@ -35,8 +25,8 @@
       --border:    rgba(0,212,255,0.15);
       --card-bg:   rgba(13,18,32,0.85);
       --glow:      0 0 30px rgba(0,212,255,0.25);
-      --font:      'Inter', sans-serif;
-      --mono:      'JetBrains Mono', monospace;
+      --font:      system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --mono:      ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
       --radius:    12px;
       --transition:0.35s cubic-bezier(0.4,0,0.2,1);
     }
@@ -812,6 +802,14 @@
       z-index: 9999;
       transition: width 0.1s linear;
     }
+
+    /* ─── INLINE AOS (scroll-reveal, no CDN needed) ──────────────── */
+    [data-aos] { opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; }
+    [data-aos="fade-up"]    { transform: translateY(24px); }
+    [data-aos="fade-right"] { transform: translateX(-24px); }
+    [data-aos="fade-left"]  { transform: translateX(24px); }
+    [data-aos="zoom-in"]    { transform: scale(0.88); }
+    [data-aos].aos-animate  { opacity: 1 !important; transform: none !important; }
   </style>
 </head>
 <body>
@@ -825,7 +823,7 @@
 <!-- ───────────── NAVIGATION ───────────── -->
 <nav id="navbar">
   <a href="#" class="nav-logo">
-    <i class="fa-solid fa-shield-halved shield-icon"></i>
+    🛡️
     IR Playbook
   </a>
   <ul class="nav-links" id="nav-links">
@@ -836,7 +834,7 @@
     <li><a href="#approach">My Approach</a></li>
     <li><a href="#references">References</a></li>
   </ul>
-  <span class="nav-badge"><i class="fa-solid fa-circle" style="font-size:0.5rem;color:var(--accent3);"></i> NIST SP 800-61</span>
+  <span class="nav-badge"><span style="font-size:0.6rem;line-height:1;">●</span> NIST SP 800-61</span>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -857,10 +855,10 @@
     </p>
     <div class="hero-cta">
       <a href="#lifecycle" class="btn btn-primary">
-        <i class="fa-solid fa-route"></i> Explore the Lifecycle
+        🗺️ Explore the Lifecycle
       </a>
       <a href="#standards" class="btn btn-outline">
-        <i class="fa-solid fa-book-open"></i> View Standards
+        📖 View Standards
       </a>
     </div>
     <div class="hero-stats">
@@ -888,7 +886,7 @@
 <section id="overview">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-circle-info"></i> Introduction</span>
+      <span class="section-tag">ℹ️ Introduction</span>
       <h2 class="section-title">Why Completeness Matters</h2>
       <p class="section-desc">
         The main idea behind this playbook is <strong>completeness</strong>. If an incident happens tomorrow
@@ -899,21 +897,21 @@
     <div class="intro-grid">
       <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
         <div class="icon-wrap" style="background:rgba(0,212,255,0.1);color:var(--accent);">
-          <i class="fa-solid fa-layer-group"></i>
+          ⬛
         </div>
         <h3>Structured Process</h3>
         <p>Incidents are handled predictably and controlled rather than reactively, following a proven lifecycle.</p>
       </div>
       <div class="intro-card" data-aos="fade-up" data-aos-delay="200">
         <div class="icon-wrap" style="background:rgba(124,58,237,0.12);color:var(--accent2);">
-          <i class="fa-solid fa-file-shield"></i>
+          🛡️
         </div>
         <h3>Full Documentation</h3>
         <p>Every action, decision and timestamp is recorded from the opening of a ticket to final report.</p>
       </div>
       <div class="intro-card" data-aos="fade-up" data-aos-delay="300">
         <div class="icon-wrap" style="background:rgba(16,185,129,0.1);color:var(--accent3);">
-          <i class="fa-solid fa-arrows-rotate"></i>
+          🔄
         </div>
         <h3>Continuous Improvement</h3>
         <p>Each incident feeds back into detection rules, playbook refinements and awareness training.</p>
@@ -926,7 +924,7 @@
 <section id="lifecycle">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-timeline"></i> Full Cycle</span>
+      <span class="section-tag">⏱️ Full Cycle</span>
       <h2 class="section-title">Incident Response Lifecycle</h2>
       <p class="section-desc">
         Nine phases that span from preventive preparation through post-incident learning.
@@ -939,7 +937,7 @@
       <!-- Phase 0 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="50">
         <div class="tl-icon" style="background:rgba(124,58,237,0.15);color:var(--accent2);">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
+          🔧
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -962,7 +960,7 @@
       <!-- Phase 1 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="100">
         <div class="tl-icon" style="background:rgba(0,212,255,0.12);color:var(--accent);">
-          <i class="fa-solid fa-bell"></i>
+          🔔
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -985,7 +983,7 @@
       <!-- Phase 2 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="150">
         <div class="tl-icon" style="background:rgba(239,68,68,0.12);color:var(--danger);">
-          <i class="fa-solid fa-bolt"></i>
+          ⚡
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1007,7 +1005,7 @@
       <!-- Phase 3 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="200">
         <div class="tl-icon" style="background:rgba(245,158,11,0.12);color:var(--warn);">
-          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          🔍
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1029,7 +1027,7 @@
       <!-- Phase 4 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="250">
         <div class="tl-icon" style="background:rgba(0,212,255,0.12);color:var(--accent);">
-          <i class="fa-solid fa-binoculars"></i>
+          🔭
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1051,7 +1049,7 @@
       <!-- Phase 5 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="300">
         <div class="tl-icon" style="background:rgba(239,68,68,0.12);color:var(--danger);">
-          <i class="fa-solid fa-lock"></i>
+          🔐
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1074,7 +1072,7 @@
       <!-- Phase 6 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="350">
         <div class="tl-icon" style="background:rgba(124,58,237,0.15);color:var(--accent2);">
-          <i class="fa-solid fa-broom"></i>
+          ��
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1096,7 +1094,7 @@
       <!-- Phase 7 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="400">
         <div class="tl-icon" style="background:rgba(16,185,129,0.12);color:var(--accent3);">
-          <i class="fa-solid fa-rotate"></i>
+          🔄
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1118,7 +1116,7 @@
       <!-- Phase 8 -->
       <div class="tl-item" data-aos="fade-right" data-aos-delay="450">
         <div class="tl-icon" style="background:rgba(16,185,129,0.12);color:var(--accent3);">
-          <i class="fa-solid fa-chart-line"></i>
+          📈
         </div>
         <div class="tl-content">
           <div class="tl-header">
@@ -1146,7 +1144,7 @@
 <section id="standards">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-award"></i> Frameworks</span>
+      <span class="section-tag">🏆 Frameworks</span>
       <h2 class="section-title">International Standards</h2>
       <p class="section-desc">
         Multiple international frameworks define Incident Response. Each has different strengths.
@@ -1231,7 +1229,7 @@
 <section id="roles">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-users"></i> Team Structure</span>
+      <span class="section-tag">👥 Team Structure</span>
       <h2 class="section-title">SOC Involvement &amp; Roles</h2>
       <p class="section-desc">
         Clear ownership reduces confusion during high-pressure moments.
@@ -1242,7 +1240,7 @@
 
       <div class="role-card" data-aos="zoom-in" data-aos-delay="100">
         <div class="role-avatar" style="background:rgba(0,212,255,0.1);color:var(--accent);">
-          <i class="fa-solid fa-eye"></i>
+          👁️
         </div>
         <h3>SOC L1</h3>
         <p>Monitors dashboards, performs initial triage on alerts, determines false positive vs. real incident, and escalates when needed. First responder to any signal.</p>
@@ -1250,7 +1248,7 @@
 
       <div class="role-card" data-aos="zoom-in" data-aos-delay="200">
         <div class="role-avatar" style="background:rgba(245,158,11,0.1);color:var(--warn);">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          🔍
         </div>
         <h3>SOC L2</h3>
         <p>Deep investigation and scoping. Analyses log data, identifies affected systems, traces lateral movement, and delivers impact assessment to IR Lead.</p>
@@ -1258,7 +1256,7 @@
 
       <div class="role-card" data-aos="zoom-in" data-aos-delay="300">
         <div class="role-avatar" style="background:rgba(124,58,237,0.12);color:var(--accent2);">
-          <i class="fa-solid fa-sitemap"></i>
+          🗂️
         </div>
         <h3>IR Lead / L3</h3>
         <p>Incident Commander during active response. Coordinates all decisions, communication and containment strategy. Signs off on high-impact actions. Authors final report.</p>
@@ -1266,7 +1264,7 @@
 
       <div class="role-card" data-aos="zoom-in" data-aos-delay="400">
         <div class="role-avatar" style="background:rgba(16,185,129,0.1);color:var(--accent3);">
-          <i class="fa-solid fa-server"></i>
+          🖥️
         </div>
         <h3>IT / System Owners</h3>
         <p>Execute system-level containment and recovery actions: isolating machines, rebuilding systems, applying patches, restoring from backups. Implement IR Lead directives.</p>
@@ -1274,7 +1272,7 @@
 
       <div class="role-card" data-aos="zoom-in" data-aos-delay="500">
         <div class="role-avatar" style="background:rgba(239,68,68,0.1);color:var(--danger);">
-          <i class="fa-solid fa-briefcase"></i>
+          💼
         </div>
         <h3>Management</h3>
         <p>Engaged when business-critical decisions are needed: approving high-impact containment actions, regulatory notifications, customer communications, or resource allocation.</p>
@@ -1288,7 +1286,7 @@
 <section id="approach">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-brain"></i> Personal Framework</span>
+      <span class="section-tag">🧠 Personal Framework</span>
       <h2 class="section-title">My Approach to Incident Response</h2>
       <p class="section-desc">
         Structured and calm. Two things happen simultaneously: stabilize the environment and preserve facts.
@@ -1338,7 +1336,7 @@
 
       <div data-aos="fade-left">
         <div class="framework-visual">
-          <h4><i class="fa-solid fa-rotate" style="margin-right:8px;"></i>NIST SP 800-61 Core Phases</h4>
+          <h4><span style="margin-right:8px;">🔄</span>NIST SP 800-61 Core Phases</h4>
           <div class="cycle-steps">
             <div class="cycle-step">
               <span class="step-num">01</span>
@@ -1373,7 +1371,7 @@
           </div>
 
           <div class="mt-md" style="padding-top:1.5rem;border-top:1px solid var(--border);">
-            <h4 style="margin-bottom:1rem;"><i class="fa-solid fa-scale-balanced" style="margin-right:8px;"></i>Why NIST Over Others?</h4>
+            <h4 style="margin-bottom:1rem;"><span style="margin-right:8px;">⚖️</span>Why NIST Over Others?</h4>
             <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.5rem;">
               <strong style="color:var(--text);">ISO/IEC 27035</strong> — Excellent for governance but less actionable for SOC practitioners.
             </p>
@@ -1394,7 +1392,7 @@
 <section id="references">
   <div class="section-inner">
     <div data-aos="fade-up">
-      <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Sources</span>
+      <span class="section-tag">📚 Sources</span>
       <h2 class="section-title">References &amp; Further Reading</h2>
       <p class="section-desc">
         This playbook draws from authoritative sources. Reading in full is not mandatory —
@@ -1405,7 +1403,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="100">
         <div class="ref-icon" style="background:rgba(0,212,255,0.1);color:var(--accent);">
-          <i class="fa-solid fa-file-lines"></i>
+          📄
         </div>
         <div>
           <h4>NIST SP 800-61 Rev.2 &amp; Rev.3</h4>
@@ -1415,7 +1413,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="150">
         <div class="ref-icon" style="background:rgba(124,58,237,0.12);color:var(--accent2);">
-          <i class="fa-solid fa-file-lines"></i>
+          📄
         </div>
         <div>
           <h4>NIST SP 800-53 Rev.5</h4>
@@ -1425,7 +1423,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="200">
         <div class="ref-icon" style="background:rgba(16,185,129,0.1);color:var(--accent3);">
-          <i class="fa-solid fa-globe"></i>
+          🌐
         </div>
         <div>
           <h4>ISO/IEC 27035</h4>
@@ -1435,7 +1433,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="250">
         <div class="ref-icon" style="background:rgba(0,212,255,0.1);color:var(--accent);">
-          <i class="fa-solid fa-fingerprint"></i>
+          🔏
         </div>
         <div>
           <h4>NIST SP 800-86</h4>
@@ -1445,7 +1443,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="300">
         <div class="ref-icon" style="background:rgba(245,158,11,0.12);color:var(--warn);">
-          <i class="fa-solid fa-shield-virus"></i>
+          🛡️
         </div>
         <div>
           <h4>SANS PICERL Model</h4>
@@ -1455,7 +1453,7 @@
 
       <div class="ref-card" data-aos="fade-up" data-aos-delay="350">
         <div class="ref-icon" style="background:rgba(124,58,237,0.12);color:var(--accent2);">
-          <i class="fa-solid fa-landmark"></i>
+          🏛️
         </div>
         <div>
           <h4>ENISA Good Practice Guide</h4>
@@ -1470,7 +1468,7 @@
 <!-- ───────────── FOOTER ───────────── -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"><i class="fa-solid fa-shield-halved"></i> IR Playbook</div>
+    <div class="footer-logo">🛡️ IR Playbook</div>
     <p>Incident Response Procedure — SOC Documentation</p>
     <p style="font-size:0.78rem;">Based on NIST SP 800-61 · ISO/IEC 27035 · SANS PICERL · NIST SP 800-86 · ENISA</p>
     <div class="footer-tags">
@@ -1484,15 +1482,9 @@
 </footer>
 
 <!-- Back to Top -->
-<button id="btt" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-
-<!-- AOS Script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<button id="btt" aria-label="Back to top">↑</button>
 
 <script>
-  // ── AOS init ────────────────────────────────────────────────────
-  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
-
   // ── Hamburger menu ───────────────────────────────────────────────
   const ham   = document.getElementById('hamburger');
   const links = document.getElementById('nav-links');
@@ -1595,6 +1587,20 @@
     document.getElementById('navbar').style.boxShadow =
       window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,0.5)' : 'none';
   }, { passive: true });
+
+  // ── Inline scroll-reveal (replaces AOS CDN) ─────────────────────
+  (function () {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var delay = parseInt(e.target.getAttribute('data-aos-delay') || '0', 10);
+          setTimeout(function () { e.target.classList.add('aos-animate'); }, delay);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('[data-aos]').forEach(function (el) { obs.observe(el); });
+  })();
 </script>
 </body>
 </html>
